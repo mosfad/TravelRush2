@@ -3,7 +3,7 @@ import axios from "axios";
 
 //URL and API key for google API
 const googleURL = "https://maps.googleapis.com/maps/api/geocode/json?address=";
-const googleKEY = "AIzaSyCqOAF-sXj7Q5MxZzQTBIDyjHYSfVD_WT0";
+const googleKEY = "AIzaSyAur7oZgFWLDt_n5NWMl4dMjRDiqiirq-Q";
 
 //google api query export
 export const googleSearch = formattedAddress => {
@@ -31,6 +31,7 @@ const yelpURL =
   "https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=";
 const yelpAPIKey =
   "NNn_iZkgwcsoXyb1LwNcwgRAiCL8c3RkazAkRcQueV0e5b0lZNV-SGGIeosL3AiABzN0_PsQasfbyA8BkbNTjHr-RiTH3sKFAPyB8SCmQInth1SBzlW1uhiuBsr5XHYx";
+//   "NNn_iZkgwcsoXyb1LwNcwgRAiCL8c3RkazAkRcQueV0e5b0lZNV-SGGIeosL3AiABzN0_PsQasfbyA8BkbNTjHr-RiTH3sKFAPyB8SCmQInth1SBzlW1uhiuBsr5XHYx";
 const configYelp = {
   headers: {
     Authorization: "Bearer " + yelpAPIKey
