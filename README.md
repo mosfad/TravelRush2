@@ -1,18 +1,12 @@
 # travelRush2
 
----
-
 travelRush2 is designed to assist rushed travelers with unplanned last-minute trips, by providing a quick one stop search for airports, destination weather forecast, and nearby hotels and restaurants.
 
 ## Overview
 
----
-
 travelRush2 accepts user inputs- destination address and departure date, and queries different APIs to display pertinent information about the desination. The full stack app, which is built on the MERN stack, allows the user to register for an account and save favorite searches for future retrieval.
 
 ## Instructions
-
----
 
 ### [Demo]()
 
@@ -26,27 +20,19 @@ A future goal is to add features to the app, such as allowing users to choose de
 
 ## APIs Used
 
----
-
-_OpenWeatherMap API_ to display weather forecast.
-_AirportFinder API_ to display list of airports within a location.
-_Geocoding API_ to get the coordinates of destination.
-_Yelp API_ to display information about nearby restaurants, hotels and coffee-shops.
+- _OpenWeatherMap API_ to display weather forecast.
+- _AirportFinder API_ to display list of airports within a location.
+- _Geocoding API_ to get the coordinates of destination.
+- _Yelp API_ to display information about nearby restaurants, hotels and coffee-shops.
 
 ## Deployed App
-
----
 
 https://travelrush2.herokuapp.com/
 
 ## Contact us about traveRush
 
----
-
-*mishelt13@gmail.com *emma.delzer@gmail.com *geoffrey.xwin@gmail.com *maafadina@gmail.com
+mishelt13@gmail.com emma.delzer@gmail.com geoffrey.xwin@gmail.com maafadina@gmail.com
 
 ## Contributors
 
----
-
-*Michelle (Team Leader) *Emma *Modupe *Geo \*Jesus
+Michelle (Team Leader) Emma Modupe Geo Jesus

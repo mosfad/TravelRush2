@@ -212,7 +212,7 @@ module.exports = {
     db.Favorite.findOneAndUpdate(
       { owner: owner },
       {
-        $push: {
+        $addToSet: {
           [category]: {
             name: name,
             url: url,
@@ -225,7 +225,6 @@ module.exports = {
       { new: true }
     )
       .then(favorites => {
-        //PUSH IS NOT HAPPENING WHY??!!!.................................................
         console.log(favorites);
       })
       .catch(err => console.log(err));
@@ -245,8 +244,30 @@ module.exports = {
   },
 
   //delete favorites for a specific user
-  deleteFavorites: function(req, res) {
-    //
+  removeFavorite: function(req, res) {
+    console.log("I am inside the function to delete user's favorite...");
+    const { owner, category, name, location } = req.body;
+    console.log(req.params);
+    console.log(req.body);
+
+    //Error is here....
+    db.Favorite.findOneAndUpdate(
+      { owner: owner },
+      {
+        $pull: {
+          [category]: {
+            name: name,
+            location: location
+          }
+        }
+      },
+      { new: true }
+    )
+      .then(fav => {
+        console.log(fav);
+        res.status(200).send("Favorite was successfully removed...");
+      })
+      .catch(err => console.log(err));
   }
 };
 

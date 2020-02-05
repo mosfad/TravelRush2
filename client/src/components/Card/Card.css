@@ -27,3 +27,12 @@
 #faves-btn {
   border: none;
 }
+
+#weather-day {
+  font-weight: bold;
+}
+
+i.favdelete-icon {
+  color: red;
+  cursor: pointer;
+}

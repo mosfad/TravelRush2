@@ -31,11 +31,21 @@ router
     usersController.getUserInfo
   );
 
-//
+//@route POST api/users/:id/addfavorite
+//@desc Bookmark favorite search results to authd user's account
+//@access...
 router.route("/:id/addfavorite").post(usersController.updateFavorites);
 
-//
+//@route GET api/users/:id/getfavorite
+//@desc Return authd user's favorite search results
+//@acess...
 router.route("/:id/getfavorite").get(usersController.getFavorites);
+
+//@route PUT api/users/:id/removefavorite
+//@desc Updates cached favorites by removing a favorite from user's account
+//@access...
+router.route("/:id/removefavorite").put(usersController.removeFavorite);
+
 // router.get("/", (req, res) => {
 //   res.json({ msg: "user router works, but the controller doesn't!" });
 // });

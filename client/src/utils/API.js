@@ -110,6 +110,15 @@ export const getFavorites = owner => {
   return axios.get("/api/users/" + owner + "/getfavorite");
 };
 
+//Route to remove favorite results for a specif user
+export const removeFavorite = favorite => {
+  console.log(favorite);
+  return axios.put(
+    "/api/users/" + favorite.owner + "/removefavorite",
+    favorite
+  );
+};
+
 // // Route for current user(access to a protected route for the user, using jwt token.)
 // export const currentUser = (authToken) => {
 //   return axios.get("/api/users/current");

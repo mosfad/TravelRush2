@@ -17,6 +17,7 @@
     "material-table": "^1.50.0",
     "materialize": "^1.0.0",
     "materialize-css": "^1.0.0-rc.2",
+    "moment": "^2.24.0",
     "react": "^16.6.3",
     "react-autosuggest": "^9.4.3",
     "react-dom": "^16.6.3",
