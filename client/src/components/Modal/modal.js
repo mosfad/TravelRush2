@@ -16,8 +16,8 @@ import Fade from "@material-ui/core/Fade";
 import classnames from "classnames";
 import { loginUser } from "../../utils/API";
 import SignUp from "../SignUp/signUp";
-import { Link } from "react-router-dom";
-import { Router, Route } from "react-router-dom";
+//import { Link } from "react-router-dom";
+import { Router, Route, Link } from "react-router-dom";
 import history from "../../utils/history";
 
 const useStyles = makeStyles(theme => ({
@@ -217,9 +217,9 @@ function TransitionsModal(props) {
             </form>
             <div className="d-flex justify-content-center links">
               Don't have an account?{" "}
-              <a href="/signup" className="ml-2">
+              <Link to="/signup" className="m1-2" onClick={handleClose}>
                 Sign Up!
-              </a>
+              </Link>
             </div>
             <div className="d-flex justify-content-center links">
               {/* <a href="#">Forgot your password?</a> */}
