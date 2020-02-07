@@ -6,6 +6,8 @@ import SearchContainer from "../components/SearchContainer";
 import CardContainer from "../components/Card/YelpCard/cardContainer";
 import WeatherCardContainer from "../components/Card/WeatherCard/Weather";
 import ModalContainer from "../components/Modal/modalContainer";
+import Preloader from "../components/Preloader";
+import "./pagecontainer.css";
 
 import MyAccount from "./MyAccount/MyAccount";
 
@@ -68,16 +70,21 @@ class PageContainer extends Component {
     console.log(this.state.hasResponse + "(was response returned?)");
     let preloader =
       this.state.clickedButton && !this.state.hasResponse ? (
-        <div className="progress">
-          <div className="indeterminate"></div>
-        </div>
+        <Preloader
+          style={{
+            margin: "0 auto"
+          }}
+        />
       ) : (
         ""
       );
 
     return (
       <div>
-        {/* <NavTabs
+        {/*<div className="progress">
+          <div className="indeterminate"></div>
+        </div>
+         <NavTabs
               currentPage={this.state.currentPage}
               handlePageChange={this.handlePageChange}
             /> */}
@@ -86,6 +93,7 @@ class PageContainer extends Component {
           appcb={this.callbackFunction}
           pageContMadeRequest={this.handleMadeRequest}
         />
+        {preloader}
         {transModal === true ? <ModalContainer openModal={transModal} /> : ""}
         <div className="row">
           <WeatherCardContainer parentState={this.state.searchLocation} />
@@ -95,7 +103,6 @@ class PageContainer extends Component {
           />
           {this.renderPage()}
         </div>
-        {preloader}
       </div>
     );
   }
