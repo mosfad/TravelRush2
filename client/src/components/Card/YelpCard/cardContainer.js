@@ -19,7 +19,8 @@ class CardContainer extends Component {
     request: false,
     owner: "",
     city: "",
-    statecode: ""
+    statecode: "",
+    responseStatus: { restaurant: false, coffee: false, hotel: false }
   };
 
   componentDidMount() {
@@ -36,34 +37,74 @@ class CardContainer extends Component {
     this.getCurrentUser();
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps, prevState) {
+    console.log("I am inside componentDidUpdate()");
     if (this.props.parentState && !this.state.search) {
       const { searchContainInput } = this.props.parentState;
       this.setState({ search: this.props.parentState, request: false }, () => {
         this.searchYelp();
+        //this.hasEmptyResponses();
         //Not sure how to use call back/promise for lines 27 - 29
-        if (!this.isEmptyResponses()) {
-          this.setState({ request: false });
-        }
-
-        // console.log("Request is " + this.state.request);
-        // if (this.state.request) {
-        //   setTimeout(this.setState({ request: false }), 3000);
+        //CAUSING TOO MANY REQUESTS
+        // if (!this.hasEmptyResponses()) {
+        //   this.setState({ request: false });
+        // }
+        // }
+        // console.log(this.state.responseStatus);
+        // if (
+        //   this.state.responseStatus.restaurant &&
+        //   this.state.responseStatus.coffee &&
+        //   this.state.responseStatus.hotel
+        // ) {
+        //   this.props.pageContGotResponse(true);
+        // } else {
+        //   this.props.pageContGotResponse(true);
         // }
       });
     }
+    //NEED TO USE THIS LIFE CYCLE METHOD TO CHECK this.state.response1 , ...response2, AND SO ON
+    //BEFORE ADUSTING THE STATE OF responseState.***********
+    if (
+      prevState &&
+      (prevState.responseStatus.restaurant !==
+        this.state.responseStatus.restaurant ||
+        prevState.responseStatus.coffee !== this.state.responseStatus.coffee ||
+        prevState.responseStatus.hotel !== this.state.responseStatus.hotel)
+    ) {
+      if (
+        this.state.responseStatus.restaurant &&
+        this.state.responseStatus.coffee &&
+        this.state.responseStatus.hotel
+      ) {
+        this.props.pageContGotResponse(true);
+      } else {
+        this.props.pageContGotResponse(false);
+      }
+    }
   }
 
-  isEmptyResponses() {
-    return (
+  hasEmptyResponses() {
+    let responseState =
       typeof this.state.response1 === "object" &&
-      Object.keys(this.state.response1).length === 0 &&
-      (typeof this.state.response2 === "object" &&
-        Object.keys(this.state.response2).length === 0) &&
-      (typeof this.state.response3 === "object" &&
-        Object.keys(this.state.response3).length === 0)
-    );
+      Object.keys(this.state.response1).length > 0;
+    console.log(this.state.response1);
+    console.log(responseState);
+    // && typeof this.state.response2 === "object" &&
+    // Object.keys(this.state.response2).length > 0 &&
+    // typeof this.state.response3 === "object" &&
+    // Object.keys(this.state.response3).length > 0;
+
+    this.props.pageContGotResponse(responseState);
+    // return (
+    //   typeof this.state.response1 === "object" &&
+    //   Object.keys(this.state.response1).length === 0 &&
+    //   typeof this.state.response2 === "object" &&
+    //   Object.keys(this.state.response2).length === 0 &&
+    //   typeof this.state.response3 === "object" &&
+    //   Object.keys(this.state.response3).length === 0
+    // );
   }
+
   searchYelp = search => {
     var call1 = yelpSearch(
       "hotels",
@@ -92,7 +133,8 @@ class CardContainer extends Component {
       };
       this.setState({
         response3: coffeeInfo,
-        responsedetail3: response3.data.businesses
+        responsedetail3: response3.data.businesses,
+        responseStatus: { ...this.state.responseStatus, coffee: true }
       });
     });
 
@@ -111,7 +153,8 @@ class CardContainer extends Component {
         response1: hotelsInfo,
         responsedetail1: response1.data.businesses,
         city: response1.data.businesses[0].location.city,
-        statecode: response1.data.businesses[0].location.state
+        statecode: response1.data.businesses[0].location.state,
+        responseStatus: { ...this.state.responseStatus, hotel: true }
       });
     });
 
@@ -126,7 +169,8 @@ class CardContainer extends Component {
       };
       this.setState({
         response2: restaurantsInfo,
-        responsedetail2: response2.data.businesses
+        responsedetail2: response2.data.businesses,
+        responseStatus: { ...this.state.responseStatus, restaurant: true }
       });
     });
   };
@@ -175,7 +219,7 @@ class CardContainer extends Component {
         //I AM HERE......FIGURE OUT HOW TO GET THE FAVORITE MODEL TO ACCEPT THIS `FUTURE` POST REQUEST.
       } else {
         //Alert user is not logged in
-        alert("Please login to save items to your Favorites");
+        alert("Please login to bookmark search results.");
       }
     } else {
       // Sorry! No Web Storage support..

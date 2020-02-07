@@ -5,14 +5,25 @@ import SignUp from "../components/SignUp/signUp";
 import SearchContainer from "../components/SearchContainer";
 import CardContainer from "../components/Card/YelpCard/cardContainer";
 import WeatherCardContainer from "../components/Card/WeatherCard/Weather";
+import ModalContainer from "../components/Modal/modalContainer";
 
 import MyAccount from "./MyAccount/MyAccount";
 
 class PageContainer extends Component {
   state = {
     currentPage: "Home",
-    airportInfo: ""
+    airportInfo: "",
+    clickedButton: false,
+    hasResponse: null
+    /*searchParams: {}*/
   };
+  //HOW DO I STOP THE PRELOADER????............................................
+
+  // componentDidUpdate() {
+  //   this.setState(state => {
+  //     return { clickedButton: !state.clickedButton };
+  //   });
+  // }
 
   callbackFunction = searchContainInput => {
     console.log(searchContainInput.coordLoc.lat + "= Lat");
@@ -21,6 +32,14 @@ class PageContainer extends Component {
     this.setState({
       searchLocation: searchContainInput
     });
+  };
+
+  handleMadeRequest = clicked => {
+    this.setState({ clickedButton: clicked });
+  };
+
+  handleHasResponse = response => {
+    this.setState({ hasResponse: response });
   };
 
   handlePageChange = page => {
@@ -38,8 +57,23 @@ class PageContainer extends Component {
       return <MyAccount />;
     }
   };
-
+  // this.state.searchLocation !== undefined
   render() {
+    let transModal = "";
+    if (this.props.location.state !== undefined) {
+      transModal = this.props.location.state.fromModal;
+    }
+    console.log("Airport info in PageContainer is " + this.state.airportInfo);
+    console.log(this.state.clickedButton + "(was button clicked?)");
+    console.log(this.state.hasResponse + "(was response returned?)");
+    let preloader =
+      this.state.clickedButton && !this.state.hasResponse ? (
+        <div className="progress">
+          <div className="indeterminate"></div>
+        </div>
+      ) : (
+        ""
+      );
 
     return (
       <div>
@@ -48,18 +82,22 @@ class PageContainer extends Component {
               handlePageChange={this.handlePageChange}
             /> */}
 
-        <SearchContainer appcb={this.callbackFunction} />
+        <SearchContainer
+          appcb={this.callbackFunction}
+          pageContMadeRequest={this.handleMadeRequest}
+        />
+        {transModal === true ? <ModalContainer openModal={transModal} /> : ""}
         <div className="row">
           <WeatherCardContainer parentState={this.state.searchLocation} />
-          <CardContainer parentState={this.state.searchLocation} />
+          <CardContainer
+            parentState={this.state.searchLocation}
+            pageContGotResponse={this.handleHasResponse}
+          />
           {this.renderPage()}
         </div>
-        {/*<div className="progress">
-          <div className="indeterminate"></div>
-          </div>*/}
+        {preloader}
       </div>
     );
-
   }
 }
 

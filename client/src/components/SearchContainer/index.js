@@ -38,8 +38,10 @@ class SearchContainer extends Component {
   render() {
     return (
       <div>
-        <DropDown searchContaincb={this.props.appcb}></DropDown>
-
+        <DropDown
+          searchContaincb={this.props.appcb}
+          searchContMadeRequest={this.props.pageContMadeRequest}
+        ></DropDown>
       </div>
     );
   }

@@ -64,7 +64,12 @@ class DropDown extends React.Component {
             ""
           )}
 
-          <a className="dropdown-trigger btn" href="#" data-target="dropdown1" style={{marginTop: '1rem'}}>
+          <a
+            className="dropdown-trigger btn"
+            href="#"
+            data-target="dropdown1"
+            style={{ marginTop: "1rem" }}
+          >
             Airport/Address
           </a>
 
@@ -88,6 +93,7 @@ class DropDown extends React.Component {
           <SearchForm
             travelMode={this.state.travelChoice}
             dropcb={this.props.searchContaincb}
+            dropMadeRequest={this.props.searchContMadeRequest}
           />
         )}
       </div>

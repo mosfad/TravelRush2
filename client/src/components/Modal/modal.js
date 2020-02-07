@@ -46,12 +46,19 @@ function TransitionsModal(props) {
   const [userAuth, setUserauth] = useState({ success: false, token: "" });
 
   const handleOpen = () => {
+    //history.replace("/");
     setOpen(true);
   };
 
   const handleClose = () => {
     setOpen(false);
   };
+
+  useEffect(() => {
+    if (props.openModal) {
+      handleOpen();
+    }
+  }, []);
 
   useEffect(() => {
     //console.log("I am inside the `effect hook`...........");
@@ -92,19 +99,17 @@ function TransitionsModal(props) {
     logUser(credentials);
   };
 
+  //logs in users with correct credentials or displays validation errors.
   const logUser = userInput => {
     console.log(userInput);
     loginUser(userInput)
       .then(response => {
-        //console.log("Successfully logged into account");
-        //console.log(response);
         if (response.data.success) {
           //set token if login is successful.
           setUserauth(response.data);
           //clear errors on successfull log in
           setErrors({});
           history.push("/myaccount");
-          //handleOnChange();
           handleClose();
         } else if (response.data.email === "User not found") {
           //update error and isValid state variables when user wasn't found in the database
@@ -117,10 +122,6 @@ function TransitionsModal(props) {
         }
       })
       .catch(err => {
-        //console.log("Account not created because of error");
-        //console.log(err);
-        //console.log("this is an error", err.response);
-        //Set the state for the errors
         if (err.response.data.errors) {
           setErrors(err.response.data.errors);
         }
@@ -129,8 +130,6 @@ function TransitionsModal(props) {
   };
 
   return (
-    // <Router>
-
     <div>
       <a className="waves-effect waves-teal btn-flat" onClick={handleOpen}>
         Login
@@ -232,33 +231,4 @@ function TransitionsModal(props) {
   );
 }
 
-export default TransitionsModal; /*onClick={handleFormSubmit}
-                 type="button"
-                  name="button"
-                  id="loginButton"
-                  className="btn
-                login_btn"
-                >
-                  {" "}
-                  Login
-                </button>
-              )} */
-/*onClick={handleFormSubmit}
-                    type="button"
-                    name="button"
-                    id="loginButton"
-                    className="btn login_btn"
-                  >
-                    {" "}
-                    Login
-                  </button>
-                </Link>
-              ) : (
-                <button
-                  /*onClick={props.onSubmit}*/
-
-/*
-{userAuth.success ? (
-                <Link to="/myaccount">
-                  <button
-                    /*onClick={props.onSubmit}*/
+export default TransitionsModal;

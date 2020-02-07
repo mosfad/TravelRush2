@@ -18,7 +18,8 @@ class SearchForm extends Component {
     address: "",
     date: "",
     coordLoc: { long: 0, lat: 0 },
-    airportList: []
+    airportList: [],
+    requestMade: false
   };
 
   componentDidMount() {
@@ -51,6 +52,8 @@ class SearchForm extends Component {
       //address
       this.getCoordinates("address");
     }
+    //---------   I AM HERE.......---------------------------
+    this.props.dropMadeRequest(true);
   };
   //handles address input by extracting and updating its coordinates
   handleOnBlur = event => {
@@ -178,10 +181,10 @@ class SearchForm extends Component {
             ></InputDate>
           </div>
           <div className="row">
-            <div className="col s12" style={{textAlign: 'center'}}>
+            <div className="col s12" style={{ textAlign: "center" }}>
               <FormBtn onClick={this.handleOnClick}></FormBtn>
             </div>
-            </div>
+          </div>
         </form>
       </div>
     );
