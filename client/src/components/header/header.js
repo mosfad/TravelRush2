@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import "./header.css";
 import Account from "../Account";
 
+//I am using materialize to create the hamburger icons. I also need to use media queries to fix logo and font sizes?
 function Header() {
   return (
     <div>
@@ -39,7 +40,7 @@ function Header() {
 
             <li>
               <Link to="">
-                <ModalContainer />
+                <ModalContainer />{" "}
               </Link>
             </li>
             <li>
@@ -47,8 +48,6 @@ function Header() {
                 <Logout />
               </Link>
             </li>
-
-            {/* <li><a href="#!">LOGIN</a></li> */}
           </ul>
         </div>
       </nav>

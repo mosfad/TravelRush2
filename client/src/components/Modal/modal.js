@@ -1,23 +1,11 @@
 import React, { useState, useEffect } from "react";
-// import { BrowserRouter as Router, Link } from "react-router-dom";
-/*import {
-  BrowserRouter,
-  Switch,
-  Route,
-  withRouter,
-  Redirect,
-  Link
-} from "react-router-dom";*/
 import Logo from "../assets/images/teeny_logo.png";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
-import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import classnames from "classnames";
 import { loginUser } from "../../utils/API";
-import SignUp from "../SignUp/signUp";
-//import { Link } from "react-router-dom";
-import { Router, Route, Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import history from "../../utils/history";
 
 const useStyles = makeStyles(theme => ({
@@ -41,48 +29,47 @@ function TransitionsModal(props) {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [userAuth, setUserauth] = useState({ success: false, token: "" });
   const [isValid, setIsvalid] = useState("");
   const [errors, setErrors] = useState({});
-  const [userAuth, setUserauth] = useState({ success: false, token: "" });
 
+  //function opens modal.
   const handleOpen = () => {
-    //history.replace("/");
     setOpen(true);
   };
 
+  //function closes modal.
   const handleClose = () => {
     setOpen(false);
   };
 
+  //open modal from sign up component.
   useEffect(() => {
     if (props.openModal) {
       handleOpen();
     }
   }, []);
 
+  //use local storage to store token on successful log in.
+  //** The conditional statement prevents this hook from overwriting cached token!
   useEffect(() => {
-    //console.log("I am inside the `effect hook`...........");
-    //console.log("isValid state is " + isValid);
+    if (userAuth.token !== "") {
+      localStorage.setItem("tokenKey", userAuth.token);
+    }
+  }, [userAuth.token]);
+
+  useEffect(() => {
+    //use this hook to console log check validation status
   }, [isValid]);
 
   useEffect(() => {
-    //console.log("I am inside the `effect hook`...........");
-    //console.log("errors state is..... ");
-    //console.log(errors);
+    //use this hook to console log errors
   }, [errors]);
-
-  useEffect(() => {
-    //console.log("Set up local storage after successful log in`...........");
-    localStorage.setItem("tokenKey", userAuth.token);
-  }, [userAuth]);
 
   const handleOnChange = event => {
     const {
       target: { name, value }
     } = event;
-    //console.log("I am inside onchange event");
-    //console.log(name);
-    //console.log(value);
     if (name === "email") {
       setEmail(value);
     } else {
@@ -92,10 +79,7 @@ function TransitionsModal(props) {
 
   const handleFormSubmit = event => {
     event.preventDefault();
-    //console.log("email input is " + email);
-    //console.log("password input is " + password);
     const credentials = { email: email, password: password };
-    //console.log(credentials);
     logUser(credentials);
   };
 
@@ -105,11 +89,17 @@ function TransitionsModal(props) {
     loginUser(userInput)
       .then(response => {
         if (response.data.success) {
-          //set token if login is successful.
+          //set token on successful log in.
           setUserauth(response.data);
           //clear errors on successfull log in
           setErrors({});
-          history.push("/myaccount");
+          //On successful login, go to user's account
+          if (history.location.pathname === "/myaccount") {
+            window.location.reload(false);
+          } else {
+            history.push("/myaccount");
+          }
+          //close the login modal
           handleClose();
         } else if (response.data.email === "User not found") {
           //update error and isValid state variables when user wasn't found in the database
@@ -131,9 +121,9 @@ function TransitionsModal(props) {
 
   return (
     <div>
-      <a className="waves-effect waves-teal btn-flat" onClick={handleOpen}>
+      <button className="waves-effect waves-teal btn-flat" onClick={handleOpen}>
         Login
-      </a>
+      </button>
       <Modal
         aria-labelledby="transition-modal-title"
         aria-describedby="transition-modal-description"
@@ -231,4 +221,4 @@ function TransitionsModal(props) {
   );
 }
 
-export default TransitionsModal;
+export default withRouter(TransitionsModal);

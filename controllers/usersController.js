@@ -175,12 +175,19 @@ module.exports = {
   //     .catch(err => res.status(422).json(err));
   // },
   getUserInfo: function(req, res) {
+    console.log("Getting the user info using JWT....");
+    console.log("req.user object:");
     console.log(req.user);
-    res.json({
-      id: req.user._id,
-      name: req.user.name,
-      email: req.user.email
-    });
+    res
+      .json({
+        id: req.user._id,
+        name: req.user.name,
+        email: req.user.email
+      })
+      .catch(err =>
+        res.status(422).json({ failure: "user is not logged in. " })
+      );
+
     //res.json({ msg: "Success!" });
     //console.log("Success!");
   },

@@ -14,9 +14,12 @@ function Logout(props) {
 
   return (
     <div>
-      <a className="waves effect waves-teal btn-flat" onClick={handleClick}>
+      <button
+        className="waves effect waves-teal btn-flat"
+        onClick={handleClick}
+      >
         LOGOUT
-      </a>
+      </button>
     </div>
   );
 }

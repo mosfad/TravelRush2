@@ -3,7 +3,6 @@
 import React, { Component } from "react";
 import Card from "./Card";
 import EmptyCard from "./emptyCard";
-//import CollectionContainer from "./collectionContainer"
 import CollectionCard from "./collectionCard";
 import { yelpSearch, addFavorite, currentUser } from "../../../utils/API";
 
@@ -16,7 +15,6 @@ class CardContainer extends Component {
     responsedetail2: [],
     responsedetail3: [],
     collectionClicked: false,
-    request: false,
     owner: "",
     city: "",
     statecode: "",
@@ -24,46 +22,19 @@ class CardContainer extends Component {
   };
 
   componentDidMount() {
-    // if (this.state.search) {
-    //   if (this.state.search.airport !== "") {
-    //     const arrayLoc = this.state.search.airport.split(",");
-    //     let currLocation = arrayLoc[0] + "," + arrayLoc[1];
-    //   } else {
-    //     const arrayLoc = this.state.search.address.split(",");
-    //     let currLocation =
-    //       arrayLoc[arrayLoc.length - 2] + "," + arrayLoc[arrayLoc.length - 1];
-    //   }
-    // }
+    //Get the current user's info as soon as this component mounts,
+    //so that the auth user can bookmark a search result.
     this.getCurrentUser();
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log("I am inside componentDidUpdate()");
     if (this.props.parentState && !this.state.search) {
       const { searchContainInput } = this.props.parentState;
-      this.setState({ search: this.props.parentState, request: false }, () => {
+      this.setState({ search: this.props.parentState }, () => {
         this.searchYelp();
-        //this.hasEmptyResponses();
-        //Not sure how to use call back/promise for lines 27 - 29
-        //CAUSING TOO MANY REQUESTS
-        // if (!this.hasEmptyResponses()) {
-        //   this.setState({ request: false });
-        // }
-        // }
-        // console.log(this.state.responseStatus);
-        // if (
-        //   this.state.responseStatus.restaurant &&
-        //   this.state.responseStatus.coffee &&
-        //   this.state.responseStatus.hotel
-        // ) {
-        //   this.props.pageContGotResponse(true);
-        // } else {
-        //   this.props.pageContGotResponse(true);
-        // }
       });
     }
-    //NEED TO USE THIS LIFE CYCLE METHOD TO CHECK this.state.response1 , ...response2, AND SO ON
-    //BEFORE ADUSTING THE STATE OF responseState.***********
+    //Toggles flag which indicates the responses are complete via the progress bar in PageContainer.
     if (
       prevState &&
       (prevState.responseStatus.restaurant !==
@@ -83,28 +54,7 @@ class CardContainer extends Component {
     }
   }
 
-  hasEmptyResponses() {
-    let responseState =
-      typeof this.state.response1 === "object" &&
-      Object.keys(this.state.response1).length > 0;
-    console.log(this.state.response1);
-    console.log(responseState);
-    // && typeof this.state.response2 === "object" &&
-    // Object.keys(this.state.response2).length > 0 &&
-    // typeof this.state.response3 === "object" &&
-    // Object.keys(this.state.response3).length > 0;
-
-    this.props.pageContGotResponse(responseState);
-    // return (
-    //   typeof this.state.response1 === "object" &&
-    //   Object.keys(this.state.response1).length === 0 &&
-    //   typeof this.state.response2 === "object" &&
-    //   Object.keys(this.state.response2).length === 0 &&
-    //   typeof this.state.response3 === "object" &&
-    //   Object.keys(this.state.response3).length === 0
-    // );
-  }
-
+  //Uses Yelp API and search info to retreive search results.
   searchYelp = search => {
     var call1 = yelpSearch(
       "hotels",
@@ -139,8 +89,6 @@ class CardContainer extends Component {
     });
 
     call1.then(response1 => {
-      // console.log(response1.data.businesses.location.city);
-      // console.log(response1.data.businesses.location.state);
       var hotelsInfo = {
         name: response1.data.businesses[0].name,
         image: response1.data.businesses[0].image_url,
@@ -175,25 +123,28 @@ class CardContainer extends Component {
     });
   };
 
+  //Tracks whether user has selected card details for one of the categories.
   handleCollection = event => {
     event.preventDefault();
     this.setState({ collectionClicked: true });
   };
 
+  //Retrieves and stores auth user's info for future API requests.
   getCurrentUser() {
     const authToken = localStorage.getItem("tokenKey");
-    console.log(authToken);
-    currentUser(authToken)
-      .then(user => {
-        //console.log(user)
-        this.setState({ owner: user.data.id }, () => console.log(this.state));
-      })
-      .catch(err => {
-        console.log(err);
-        this.setState({ owner: "" }, () => console.log(this.state));
-      });
+
+    if (authToken !== undefined || authToken !== "") {
+      currentUser(authToken)
+        .then(user => {
+          this.setState({ owner: user.data.id });
+        })
+        .catch(err => {
+          this.setState({ owner: "" });
+        });
+    }
   }
 
+  //Use API to bookmark an auth user's search results.
   addToFaves = (
     favCategory,
     favName,
@@ -216,7 +167,7 @@ class CardContainer extends Component {
           distance: favDist,
           location: favLocation
         });
-        //I AM HERE......FIGURE OUT HOW TO GET THE FAVORITE MODEL TO ACCEPT THIS `FUTURE` POST REQUEST.
+        //
       } else {
         //Alert user is not logged in
         alert("Please login to bookmark search results.");
@@ -240,6 +191,7 @@ class CardContainer extends Component {
     if (!this.state.search) {
       return [
         <EmptyCard
+          key="empty-rest"
           name="Restaurants"
           img="restaurant-img"
           cardTitle="restaurant-name"
@@ -252,6 +204,7 @@ class CardContainer extends Component {
           url="restaurant-url"
         ></EmptyCard>,
         <EmptyCard
+          key="empty-coffee"
           name="Coffee"
           img="coffee-img"
           cardTitle="coffee-name"
@@ -264,6 +217,7 @@ class CardContainer extends Component {
           url="coffee-url"
         ></EmptyCard>,
         <EmptyCard
+          key="empty-hotel"
           name="Hotels"
           img="hotel-img"
           cardTitle="hotel-name"
@@ -430,29 +384,7 @@ class CardContainer extends Component {
   };
 
   render() {
-    console.log("state", this.state);
-
-    return (
-      <div>
-        {this.updateCard()}
-        <div>
-          {this.state.request ? (
-            <div className="progress">
-              <div className="indeterminate"></div>
-            </div>
-          ) : null}
-        </div>
-      </div>
-    );
+    return <div>{this.updateCard()}</div>;
   }
 }
 export default CardContainer;
-
-/*
-
-    render() {
-        
-        return (<div>
-            {this.updateCard()}
-
-}*/

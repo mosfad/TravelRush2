@@ -4,13 +4,13 @@ nav {
 }
 
 /* This changes the color 'Login' button in header */
-nav ul a.btn-flat {
+nav ul button.btn-flat {
   color: white;
   /*font-size: 2rem;*/
   font-size: 1.5rem;
 }
 
-nav ul a {
+nav ul button {
   font-family: "Anton", sans-serif;
   font-style: italic;
   /*margin-right: 45px;*/
@@ -34,7 +34,7 @@ nav .brand-logo {
 img.responsive-img,
 video.responsive-video {
   justify-content: left;
-  max-width: 40%;
+  max-width: 30%;
   margin-left: 10px;
   padding-left: 20px;
 }

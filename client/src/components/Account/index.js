@@ -12,9 +12,12 @@ function Account(props) {
 
   return (
     <div>
-      <a className="waves effect waves-teal btn-flat" onClick={handleClick}>
+      <button
+        className="waves effect waves-teal btn-flat"
+        onClick={handleClick}
+      >
         Account
-      </a>
+      </button>
     </div>
   );
 }
