@@ -8,15 +8,18 @@ travelRush2 accepts user inputs- destination address and departure date, and que
 
 ## Instructions
 
-### [Demo]()
+### [Demo](https://drive.google.com/file/d/1j0IBdSy5WOqXpVvezPKjMLdDRoG_COk1/view)
 
 1. Use the 'Search By' drop down to select how you would like to enter your destination (address or airport)
 2. Select a 'Departure Date(_within the next 5 days_) by clcking in the calendar field
 3. Hit Submit
 4. Review the initial results and click on the circle icons in each result card to view additional result details.
 5. In order to access your account to track items like favorites and past searches, click the Login button. If you don't have an account click 'Sign Up' and register for an account on travelRush.
-
-A future goal is to add features to the app, such as allowing users to choose departure dates within the next 16 days, including autocomplete capabilities so that users can choose an airport or city and state name as their destination, and displaying real-time discounted flight options.
+6. Use this test account to see the features available to authenticated users:
+   test username: _mjacobs@gmail.com_, test password: _123456b_
+   _Please use the demo provided to help you navigate this app._
+   _Please use departure dates within 5 days of the current day. We are working on increasing the restrictions to about 2 weeks._
+   _Future goals include adding real-time flight and weather information to help users plan for delays or weather disruption._
 
 ## APIs Used
 
