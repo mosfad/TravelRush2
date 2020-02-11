@@ -21,7 +21,6 @@ class SearchForm extends Component {
     //handle change for the date
     datePicker.addEventListener("change", () => {
       this.setState({ date: datePicker.value });
-      console.log(this.state.date);
     });
   }
 

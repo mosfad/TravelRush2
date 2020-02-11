@@ -29,8 +29,7 @@ class WeatherCardContainer extends Component {
       if (apiResponse[i].dt_txt.includes(date + " 15:00:00"))
         indicesTarget.push(i);
     }
-    console.log(date);
-    console.log(indicesTarget);
+
     return indicesTarget;
   };
 
@@ -52,7 +51,6 @@ class WeatherCardContainer extends Component {
           speed: response.data.list[arrIndices[0]].wind.speed,
           humidity: response.data.list[arrIndices[0]].main.humidity
         };
-        console.log(response);
         this.setState({ response: weatherInfo });
       }
     });
@@ -100,6 +98,3 @@ class WeatherCardContainer extends Component {
 }
 
 export default WeatherCardContainer;
-
-//        if (this.state.result.length > 0)
-//console.log(this.state.result[1].weather[0].description);

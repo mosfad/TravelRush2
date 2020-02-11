@@ -176,10 +176,6 @@ class CardContainer extends Component {
       // Sorry! No Web Storage support..
       alert("Sorry your browser does not have Web Storage support..");
     }
-
-    //alert("Please login to save items to your Favorites");
-    //if logged in then add new fave
-    //testing if I can extract the collection data clicked before making a request......
     // console.log(`${favCategory} is business selected.`);
     // console.log(`${favName} is business selected.`);
     // console.log(`${favUrl} is business selected.`);
@@ -234,6 +230,11 @@ class CardContainer extends Component {
       return [
         [
           <div className="card">
+            <div className="card-content">
+              <div>
+                <h5>Restaurants</h5>
+              </div>
+            </div>
             <div className="collection">
               {this.state.responsedetail2.map((businesses, index) => (
                 <CollectionCard
@@ -263,6 +264,11 @@ class CardContainer extends Component {
           </div>,
 
           <div className="card">
+            <div className="card-content">
+              <div>
+                <h5>Coffee</h5>
+              </div>
+            </div>
             <div className="collection">
               {this.state.responsedetail3.map((businesses, index) => (
                 <CollectionCard
@@ -292,6 +298,11 @@ class CardContainer extends Component {
           </div>,
 
           <div className="card">
+            <div className="card-content">
+              <div>
+                <h5>Hotels</h5>
+              </div>
+            </div>
             <div className="collection">
               {this.state.responsedetail1.map((businesses, index) => (
                 <CollectionCard

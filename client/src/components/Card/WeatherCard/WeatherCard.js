@@ -7,8 +7,6 @@ import moment from "moment";
 //import MaterialTable from "material-table";
 
 const WeatherCard = props => {
-  console.log(props.day);
-  console.log(moment(props.day).format());
   return (
     <div className="col s12 m4 l3">
       <div className="card">
@@ -23,10 +21,22 @@ const WeatherCard = props => {
             <i className="material-icons">brightness_5</i>
           </a>
         </div>
+
+        <div className="card-content" id="weather-border">
+          <h5>
+            Weather
+            <br />
+          </h5>
+        </div>
+        <div className="divider"></div>
         <div className="card-content" id="weather-results">
-          <p>
-            Weather <br />
-          </p>
+          {/* <div id="weather-border">
+            <h5>
+              Weather
+              <br />
+            </h5>
+          </div> */}
+
           <br />
           <p id="weather-day">{moment(props.day).format("MMM DD")}</p>
           <table className="striped">

@@ -6,9 +6,7 @@ class ModalContainer extends React.Component {
   render() {
     return (
       <div>
-        <button className="waves effect waves-teal btn-flat">
-          <Modal openModal={this.props.openModal} />
-        </button>
+        <Modal openModal={this.props.openModal} />
       </div>
     );
   }

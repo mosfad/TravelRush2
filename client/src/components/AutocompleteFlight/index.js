@@ -148,7 +148,7 @@ const suggestions = [
   { label: "Orlando, FL, (MCO Orlando Intl)", keyInd: "20" }
 ];
 
-console.log(typeof suggestions);
+//console.log(typeof suggestions);
 
 function renderInputComponent(inputProps) {
   const { classes, inputRef = () => {}, ref, ...other } = inputProps;

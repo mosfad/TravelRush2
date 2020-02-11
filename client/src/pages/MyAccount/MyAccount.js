@@ -24,8 +24,6 @@ class MyAccount extends Component {
 
   getCurrentUser() {
     const authToken = localStorage.getItem("tokenKey");
-
-    console.log("Token key is " + authToken);
     currentUser(authToken)
       .then(user => {
         this.setState({ owner: user.data.id }, () => {

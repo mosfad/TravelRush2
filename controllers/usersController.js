@@ -113,13 +113,11 @@ module.exports = {
 
   //Get auth user's info.
   getUserInfo: function(req, res) {
-    res
-      .json({
-        id: req.user._id,
-        name: req.user.name,
-        email: req.user.email
-      })
-      .catch(err => res.status(422).send("user is not logged in. "));
+    res.json({
+      id: req.user._id,
+      name: req.user.name,
+      email: req.user.email
+    });
   },
 
   //update favorites for a specific user
