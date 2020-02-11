@@ -1,0 +1,45 @@
+@media only screen and (max-width: 1400px) {
+  /* .nav {
+        display: flex;
+      } */
+
+  div.card {
+    margin: 0, auto;
+    width: 90%;
+  }
+  nav .brand-logo {
+    font-size: 2.25rem;
+    float: right;
+  }
+
+  div.col.s12.m4.l3 {
+    padding: 0;
+  }
+
+  .row .col.m4 {
+    width: 33.333%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  /* .nav {
+        display: flex;
+      } */
+
+  div.card {
+    margin: 0, auto;
+    width: 80%;
+  }
+  nav .brand-logo {
+    font-size: 2.25rem;
+    float: right;
+  }
+
+  div.col.s12.m3.l3 {
+    padding: 0;
+  }
+
+  .row .col.s12 {
+    width: 100%;
+  }
+}

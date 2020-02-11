@@ -4,6 +4,7 @@ import FlightInfoCard from "../../components/Card/FlightInfoCard/FlightInfoCard"
 import { currentUser, getFavorites, removeFavorite } from "../../utils/API";
 import { Router, Route, Link } from "react-router-dom";
 import history from "../../utils/history";
+import "./myaccount.css";
 
 class MyAccount extends Component {
   //if stat is user is logged i, user will be able to view the page

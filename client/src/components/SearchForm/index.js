@@ -20,6 +20,7 @@ class SearchForm extends Component {
     coordLoc: { long: 0, lat: 0 },
     airportList: [],
     requestMade: false
+    // destRequest: null
   };
 
   componentDidMount() {
@@ -37,23 +38,30 @@ class SearchForm extends Component {
 
   handleOnClick = event => {
     //prevent default behavior
+    const airport = this.state.airport;
+    const address = this.state.address;
+    const date = this.state.date;
+    const travelMode = this.props.travelMode;
     event.preventDefault();
-    //**MAKE SURE THAT THE SUBMIT BUTTON DOESN'T EXECUTE UNLESS THE USER HAS SUPPLIED THE REQUIRED INPUTS! **/
-    //Now do the necessary API calls....
-    //Remember that the state has the necessary inputs/search parameters.
-    //console.log(this.state);
-    //API calls
-    //return this.state;
-    console.log("Travel mode is " + this.props.travelMode);
-    if (this.props.travelMode === "1") {
-      //airport
-      this.getCoordinates("airport");
-    } else if (this.props.travelMode === "2") {
-      //address
-      this.getCoordinates("address");
+    if (travelMode !== "0" && date !== "") {
+      if (travelMode === "1" && airport !== "") {
+        //airport
+        this.getCoordinates("airport");
+        this.props.dropMadeRequest(true);
+      } else if (travelMode === "2" && address !== "") {
+        //address
+        this.getCoordinates("address");
+        this.props.dropMadeRequest(true);
+      } else {
+        alert("Please enter both your destination and travel date!");
+      }
+    } else {
+      if (travelMode === "0" || date === "") {
+        alert("Please enter both your destination and travel date!");
+      } else {
+        alert("Please enter both your destination and travel date!.");
+      }
     }
-    //---------   I AM HERE.......---------------------------
-    this.props.dropMadeRequest(true);
   };
   //handles address input by extracting and updating its coordinates
   handleOnBlur = event => {

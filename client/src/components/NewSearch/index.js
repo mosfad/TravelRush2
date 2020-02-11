@@ -4,9 +4,9 @@ import history from "../../utils/history";
 
 function SearchLink(props) {
   const handleClick = () => {
-    // if (props.location.pathname === "/") {
-    //   window.location.reload();
-    // }
+    if (props.location.pathname === "/") {
+      window.location.reload();
+    }
     //console.log(props.location.pathname);
   };
 
@@ -14,7 +14,7 @@ function SearchLink(props) {
     <div>
       <button
         className="waves effect waves-teal btn-flat"
-        // onClick={handleClick}
+        onClick={handleClick}
       >
         New Search
       </button>

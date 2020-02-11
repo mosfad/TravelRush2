@@ -4,19 +4,21 @@ nav {
 }
 
 /* This changes the color 'Login' button in header */
-nav ul button.btn-flat {
+nav ul button.btn-flat,
+ul button.btn-flat {
   color: white;
   /*font-size: 2rem;*/
   font-size: 1.5rem;
 }
 
-nav ul button {
+nav ul button,
+ul button.btn-flat {
   font-family: "Anton", sans-serif;
   font-style: italic;
   /*margin-right: 45px;*/
   margin-right: 0px;
   padding: 0px;
-
+  padding-right: 5px;
   -webkit-text-stroke-color: black;
   -webkit-text-stroke-width: 1.5px;
 }
@@ -37,4 +39,61 @@ video.responsive-video {
   max-width: 30%;
   margin-left: 10px;
   padding-left: 20px;
+}
+
+.sidenav {
+  width: 200px;
+  height: 50%;
+  padding-bottom: 0;
+  background-color: #7d8dbf;
+}
+
+@media only screen and (max-width: 1040px) {
+  img.responsive-img,
+  video.responsive-video {
+    justify-content: left;
+    max-width: 30%;
+    margin-left: 10px;
+    padding-left: 20px;
+  }
+  nav .brand-logo {
+    font-size: 2.5rem;
+    float: right;
+  }
+
+  nav ul button.btn-flat,
+  ul button.btn-flat {
+    color: white;
+    /*font-size: 2rem;*/
+    font-size: 1.3rem;
+  }
+}
+
+@media only screen and (max-width: 995px) {
+  /* .nav {
+    display: flex;
+  } */
+
+  img.responsive-img {
+    margin-left: 230px;
+    width: 120px;
+  }
+  nav .brand-logo {
+    font-size: 2.25rem;
+    float: right;
+  }
+}
+@media only screen and (max-width: 700px) {
+  /* .nav {
+    display: flex;
+  } */
+
+  img.responsive-img {
+    margin-left: 120px;
+    width: 120px;
+  }
+  nav .brand-logo {
+    font-size: 2.25rem;
+    float: right;
+  }
 }

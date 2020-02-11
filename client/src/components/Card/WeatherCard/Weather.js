@@ -62,7 +62,7 @@ class WeatherCardContainer extends Component {
     if (this.state.response.length == 0) {
       return (
         <div>
-          <div className="col s12 m6 l3">
+          <div className="col s12 m4 l3">
             <div className="card">
               <div className="card-image">
                 <img id="weather-img" alt=""></img>
