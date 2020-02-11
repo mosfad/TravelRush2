@@ -39,18 +39,6 @@ class PageContainer extends Component {
     this.setState({ currentPage: page });
   };
 
-  // renderPage = () => {
-  //   if (this.state.currentPage === "Home") {
-  //     return <div></div>;
-  //     // } else if (this.state.currentPage === "Login") {
-  //     //   return <Login />;
-  //   } else if (this.state.currentPage === "Sign Up") {
-  //     return <SignUp />;
-  //   } else if (this.state.currentPage === "My Account") {
-  //     return <MyAccount />;
-  //   }
-  // };
-  // this.state.searchLocation !== undefined
   render() {
     let transModal = "";
     //Checks whether prop was sent to indicate that the user wanted to login fron signup page.
@@ -62,12 +50,6 @@ class PageContainer extends Component {
 
     return (
       <div>
-        {/*
-         <NavTabs
-              currentPage={this.state.currentPage}
-              handlePageChange={this.handlePageChange}
-            /> */}
-
         <SearchContainer
           appcb={this.callbackFunction}
           pageContMadeRequest={this.handleMadeRequest}

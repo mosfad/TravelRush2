@@ -9,7 +9,6 @@ function Logout(props) {
     if (props.location.pathname === "/") {
       window.location.reload();
     }
-    console.log(props.location.pathname);
   };
 
   return (

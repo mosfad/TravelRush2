@@ -3,7 +3,6 @@ const isEmpty = require("./is-empty");
 
 module.exports = function validateLoginInput(data) {
   let errors = {};
-  console.log(data);
 
   //if email or password isn't entered, make these fields empty strings
   data.email = !isEmpty(data.email) ? data.email : "";
@@ -22,7 +21,6 @@ module.exports = function validateLoginInput(data) {
   if (Validator.isEmpty(data.password)) {
     errors.password = "Password is required";
   }
-  //need to compare this password it to the database password???????
 
   return {
     errors,

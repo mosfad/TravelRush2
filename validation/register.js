@@ -3,7 +3,7 @@ const isEmpty = require("./is-empty");
 
 module.exports = function validateRegisterInput(data) {
   let errors = {};
-  console.log(data);
+
   //if name isn't entered, make this field an empty string, otherwise this field
   //have anything in it.
   data.name = !isEmpty(data.name) ? data.name : "";

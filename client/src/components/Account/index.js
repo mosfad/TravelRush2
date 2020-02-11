@@ -7,7 +7,7 @@ function Account(props) {
     if (props.location.pathname === "/myaccount") {
       window.location.reload();
     }
-    console.log(props.location.pathname);
+    //console.log(props.location.pathname);
   };
 
   return (

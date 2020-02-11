@@ -269,7 +269,7 @@ export default function IntegrationAutosuggest(props) {
   };
 
   const handleChange = name => (event, { newValue }) => {
-    console.log(newValue); //USER INPUT IS RIGHT HERE!!!! SEND THIS AS A PROP TO THE SEARCHFORM CONTAINER****
+    //console.log(newValue); //USER INPUT IS RIGHT HERE!!!! SEND THIS AS A PROP TO THE SEARCHFORM CONTAINER****
     props.searchFormcb(newValue);
     setState({
       ...state,

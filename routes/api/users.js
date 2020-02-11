@@ -46,16 +46,4 @@ router.route("/:id/getfavorite").get(usersController.getFavorites);
 //@access...
 router.route("/:id/removefavorite").put(usersController.removeFavorite);
 
-// router.get("/", (req, res) => {
-//   res.json({ msg: "user router works, but the controller doesn't!" });
-// });
-//.post(usersController.createUser);
-
-// Matches with "/api/users/:id"
-// router
-//   .route("/:id")
-//   .get(usersController.findById)
-//   .put(usersController.updateUser)
-//   .delete(usersController.deleteUser);
-
 module.exports = router;

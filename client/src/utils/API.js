@@ -65,37 +65,18 @@ export const airportsList = () => {
   return axios.get("/api/airport");
 };
 
-//SERVER IS ON 3001 BUT REACT APP IS IN 3000????
-
 // Route to sign up users
 export const registerUser = formData => {
-  //console.log(formData);
   return axios.post("/api/users/register", formData);
-
-  // .catch(err => {
-  //   console.log("API", err.response);
-  //   return err;
-  //   //res.status(422).json(err.response.data);
-  // });
 };
 
 // Route to log in users
 export const loginUser = formData => {
-  console.log(
-    "I am inside /API folder about to perform axios post request...."
-  );
-  console.log(formData);
-  //PROBLEM WITH THE REQUEST STARTS HERE!!!
   return axios.post("/api/users/login", formData);
 };
 
 //Route to add favorite search result
 export const addFavorite = searchResults => {
-  console.log(
-    "I am inside /API folder about to perform axios post request...."
-  );
-  //console.log(searchResults.owner);
-  //PROBLEM WITH THE REQUEST STARTS HERE!!!
   return axios.post(
     "/api/users/" + searchResults.owner + "/addfavorite",
     searchResults
@@ -104,15 +85,11 @@ export const addFavorite = searchResults => {
 
 //Route to get favorite results for a specific user
 export const getFavorites = owner => {
-  console.log(
-    "I am inside /API folder to perform axios post request for favorites..."
-  );
   return axios.get("/api/users/" + owner + "/getfavorite");
 };
 
-//Route to remove favorite results for a specif user
+//Route to remove favorite results for a specific user
 export const removeFavorite = favorite => {
-  console.log(favorite);
   return axios.put(
     "/api/users/" + favorite.owner + "/removefavorite",
     favorite
@@ -120,9 +97,6 @@ export const removeFavorite = favorite => {
 };
 
 // // Route for current user(access to a protected route for the user, using jwt token.)
-// export const currentUser = (authToken) => {
-//   return axios.get("/api/users/current");
-// };
 export const currentUser = authToken => {
   return axios({
     method: "get",

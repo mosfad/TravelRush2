@@ -180,11 +180,11 @@ class CardContainer extends Component {
     //alert("Please login to save items to your Favorites");
     //if logged in then add new fave
     //testing if I can extract the collection data clicked before making a request......
-    console.log(`${favCategory} is business selected.`);
-    console.log(`${favName} is business selected.`);
-    console.log(`${favUrl} is business selected.`);
-    console.log(`${favPrice} is business selected.`);
-    console.log(`${favDist} is business selected.`);
+    // console.log(`${favCategory} is business selected.`);
+    // console.log(`${favName} is business selected.`);
+    // console.log(`${favUrl} is business selected.`);
+    // console.log(`${favPrice} is business selected.`);
+    // console.log(`${favDist} is business selected.`);
   };
 
   updateCard = () => {

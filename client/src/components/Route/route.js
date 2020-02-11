@@ -25,10 +25,5 @@ function Route() {
     </div>
   );
 }
-/* Corona..
-  Is path="/user" the protected route which accesses the token to display user info?
-  e.g <Route exact path="/user" component={MyAccount} />
-  }
-  */
 
 export default Route;

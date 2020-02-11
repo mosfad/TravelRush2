@@ -21,10 +21,8 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2, 4, 3)
   }
 }));
-//what is props doing here and where is it coming from????
-function TransitionsModal(props) {
-  //console.log(props);
 
+function TransitionsModal(props) {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
@@ -85,7 +83,6 @@ function TransitionsModal(props) {
 
   //logs in users with correct credentials or displays validation errors.
   const logUser = userInput => {
-    console.log(userInput);
     loginUser(userInput)
       .then(response => {
         if (response.data.success) {
@@ -193,7 +190,7 @@ function TransitionsModal(props) {
                 )}
               </div>
               <button
-                /*onClick={props.onSubmit}*/ onClick={handleFormSubmit}
+                onClick={handleFormSubmit}
                 type="button"
                 name="button"
                 id="loginButton"
@@ -217,7 +214,6 @@ function TransitionsModal(props) {
         </Fade>
       </Modal>
     </div>
-    // </Router>
   );
 }
 

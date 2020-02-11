@@ -1,9 +1,5 @@
-// The state of the app is changed when the user clicks prompt
-// User is redirected to sign-in page
-// if login modal is scrapped, we will likely have another state change for the login page too
 import React, { Component } from "react";
 import Logo from "../assets/images/teeny_logo.png";
-// import { BrowserRouter } from "react-router-dom";
 import { Router, Route, Link } from "react-router-dom";
 import "./signUp.css";
 import { registerUser } from "../../utils/API";
@@ -30,9 +26,6 @@ class Signup extends Component {
     const {
       target: { name, value }
     } = event;
-    //console.log("I am inside onchange event");
-    //console.log(name);
-    //console.log(value);
     this.setState({ [name]: value });
   };
 
@@ -48,13 +41,10 @@ class Signup extends Component {
         //If email already exist, set state errors object
         if (response.data.email === "Email already exists") {
           //set the state for the isValid property
-          this.setState({ errors: response.data }, () => {
-            //console.log(this.state);
-          });
+          this.setState({ errors: response.data }, () => {});
         } else {
           //set the state for the isValid property
           this.setState({ isValid: response.data }, () => {
-            //console.log(this.state.isValid.msg);
             this.props.history.push("/myaccount");
           });
         }
@@ -217,12 +207,7 @@ class Signup extends Component {
         </form>
 
         <div className="d-flex justify-content-center links">
-          Already have an account?{" "}
-          {/* <Link to="/login">
-            Login here!
-            {isValid.Success && <h5 className="black-text">{isValid.msg}</h5>}
-          </Link> */}
-          <br />
+          Already have an account? <br />
           <Link
             to={{
               pathname: "/",
@@ -233,9 +218,7 @@ class Signup extends Component {
           >
             LOGIN HERE
           </Link>
-          {/*<ModalContainer />*/}
           <div className="d-flex justify-content-center links"></div>
-          {/*<Route exact path="/login" component={TransitionsModal} />*/}
         </div>
       </div>
     );

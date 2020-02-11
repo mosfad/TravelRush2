@@ -1,16 +1,7 @@
 import React from "react";
 import M from "materialize-css";
-// import "date-fns";
-// import Grid from "@material-ui/core/Grid";
-// import DateFnsUtils from "@date-io/date-fns";
-// import {
-//   MuiPickersUtilsProvider,
-//   KeyboardTimePicker,
-//   KeyboardDatePicker
-// } from "@material-ui/pickers";
 
 // This file exports the various inputs and FormBtn components
-
 export function InputFlight(props) {
   return (
     <div>
@@ -40,18 +31,7 @@ export function InputDrive(props) {
   );
 }
 
-// const handleDateChange = e => {
-//   const onSelect = selectedDate => {
-//     console.log(selectedDate);
-//   };
-//   const elems = document.querySelectorAll(".datepicker");
-//   const instances = M.Datepicker.init(elems, onSelect);
-//   console.log("I am here....");
-//   //console.log("DATE", e.target.value);
-// };
-
 export function InputDate(props) {
-  //console.log(props);
   return (
     <div>
       <div className="input-field col s6">
@@ -69,35 +49,6 @@ export function InputDate(props) {
   );
 }
 
-// export default function MaterialUIPickers() {
-//   // The first commit of Material-UI
-//   const [selectedDate, setSelectedDate] = React.useState(new Date());
-
-//   function handleDateChange(date) {
-//     setSelectedDate(date);
-//   }
-
-//   return (
-//     <MuiPickersUtilsProvider utils={DateFnsUtils}>
-//       <Grid container justify="space-around">
-//         <KeyboardDatePicker
-//           disableToolbar
-//           variant="inline"
-//           format="MM/dd/yyyy"
-//           margin="normal"
-//           id="date-picker-inline"
-//           label="Date picker inline"
-//           value={selectedDate}
-//           onChange={handleDateChange}
-//           KeyboardButtonProps={{
-//             "aria-label": "change date"
-//           }}
-//         />
-//       </Grid>
-//     </MuiPickersUtilsProvider>
-//   );
-// }
-
 export function FormBtn(props) {
   return (
     <button
@@ -111,20 +62,3 @@ export function FormBtn(props) {
     </button>
   );
 }
-
-/*
-<DropDown>onChange={this.handleDropChange}</DropDown>
-        <Form
-          ref={flyForm => {
-            this.optionsFly = flyForm;
-          }}
-          onChange={this.handleOnChange}
-        ></Form>
-        <Form
-          ref={driveForm => {
-            this.optionsDrive = driveForm;
-          }}
-          onChange={this.handleOnChange}
-        ></Form>
-        <Form onChange={this.handleOnChange}></Form>
-        <Button onClick={this.handleOnChange}></Button>*/
