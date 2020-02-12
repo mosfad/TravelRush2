@@ -16,10 +16,13 @@ travelRush2 accepts user inputs- destination address and departure date, and que
 4. Review the initial results and click on the circle icons in each result card to view additional result details.
 5. In order to access your account to track items like favorites and past searches, click the Login button. If you don't have an account click 'Sign Up' and register for an account on travelRush.
 6. Use this test account to see the features available to authenticated users:
-   test username: _mjacobs@gmail.com_, test password: _123456b_
-   _Please use the demo provided to help you navigate this app._
-   _Please use departure dates within 5 days of the current day. We are working on increasing the restrictions to about 2 weeks._
-   _Future goals include adding real-time flight and weather information to help users plan for delays or weather disruption._
+   - test username: _mjacobs@gmail.com_
+   - test password: _123456b_
+
+- Notes
+  - Please click on the demo provided to help you navigate this app.
+  - Please use departure dates within 5 days of the current day. We are working on increasing the time frame to about 2 weeks.
+  - Future goals include adding real-time flight and weather information to help users plan for delays or weather disruption.
 
 ## APIs Used
 
