@@ -6,9 +6,11 @@ travelRush2 is designed to assist rushed travelers with unplanned last-minute tr
 
 travelRush2 accepts user inputs- destination address and departure date, and queries different APIs to display pertinent information about the desination. The full stack app, which is built on the MERN stack, allows the user to register for an account and save favorite searches for future retrieval.
 
+- MERN: MongoDB, Express.js, React & Node.js
+
 ## Instructions
 
-### [Demo](https://drive.google.com/file/d/1j0IBdSy5WOqXpVvezPKjMLdDRoG_COk1/view)
+### ![Demo](travelRush_demo_optimized.gif)
 
 1. Use the 'Search By' drop down to select how you would like to enter your destination (address or airport)
 2. Select a 'Departure Date(_within the next 5 days_) by clcking in the calendar field
