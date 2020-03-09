@@ -10,7 +10,7 @@ travelRush2 accepts user inputs- destination address and departure date, and que
 
 ## Instructions
 
-### ![Demo](travelRush_demo_optimized.gif)
+### ![Demo](https://raw.githubusercontent.com/mosfad/TravelRush2/master/travelRush_demo_optimized.gif)
 
 1. Use the 'Search By' drop down to select how you would like to enter your destination (address or airport)
 2. Select a 'Departure Date(_within the next 5 days_) by clcking in the calendar field
